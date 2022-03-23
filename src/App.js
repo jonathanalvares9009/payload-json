@@ -1,4 +1,5 @@
 import { useState } from "react";
+import utilities from "./utilities";
 
 function App() {
   const [payload, setPayload] = useState("");
@@ -8,11 +9,13 @@ function App() {
       <textarea
         className="App-textarea"
         rows="10"
-        cols="50"
+        cols="100"
         onChange={(event) => setPayload(event.target.value)}
       />
-      <button onClick={() => console.log(payload)}>Convert</button>
-      <p>{payload}</p>
+      <button onClick={() => setPayload(utilities.convertToJson(payload))}>
+        Convert
+      </button>
+      <textarea className="App-textarea" rows="10" cols="100" value={payload} />
     </div>
   );
 }
