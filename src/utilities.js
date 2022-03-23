@@ -4,7 +4,7 @@ module.exports.convertToJson = (data) => {
     let line = `    "`;
     let isColonSet = 0;
     let spaceSet = 0;
-    while (data[idx] !== "\n" && data[idx] !== "\r") {
+    while (idx < data.length && data[idx] !== "\n" && data[idx] !== "\r") {
       if (data[idx] === ":" && isColonSet === 0) {
         line += `": "`;
         isColonSet = 1;
