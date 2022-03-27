@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import utilities from "./utilities";
 import "./index.css";
 
-
-var i =1;
 function App() {
 
 
