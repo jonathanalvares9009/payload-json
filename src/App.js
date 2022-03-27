@@ -3,37 +3,36 @@ import utilities from "./utilities";
 import "./index.css";
 
 function App() {
-
-
-  const [payload, setPayload] = useState(()=>{
-    let data = localStorage.getItem('payloadData')
+  const [payload, setPayload] = useState(() => {
+    let data = "";
+    if (localStorage.getItem("payloadData")) {
+      data = localStorage.getItem("payloadData");
+    } else {
+      localStorage.setItem("payloadData", "");
+    }
     return data;
   });
-  const [converted, setConverted] = useState(()=>{
-    let data = localStorage.getItem('converted')
+
+  const [converted, setConverted] = useState(() => {
+    let data = "";
+    if (localStorage.getItem("convertedData")) {
+      data = localStorage.getItem("convertedData");
+    } else {
+      localStorage.setItem("convertedData", "");
+    }
     return data;
   });
-  
 
+  React.useEffect(() => {
+    let convertedData = utilities.convertToJson(payload);
+    setConverted(convertedData);
+    localStorage.setItem("convertedData", convertedData);
+  }, [payload]);
 
-  React.useEffect(()=>{
-    let convertedData = utilities.convertToJson(payload)
-
-      setConverted(convertedData)
-      console.log("converteddata: "+convertedData)
-      localStorage.setItem('converted',convertedData)
-  },[payload])
-  
-  function handleChange(event){
-
-    //CODE THAT CONVERTS PAYLOAD TO LIVE JSON
-    console.log("payload: "+payload)
-  
-      localStorage.setItem('payloadData',event.target.value)
-    setPayload(event.target.value)
-
+  function handleChange(event) {
+    localStorage.setItem("payloadData", event.target.value);
+    setPayload(event.target.value);
   }
-  
 
   return (
     <div className="App bg-teal">
@@ -44,22 +43,9 @@ function App() {
         cols="100"
         onChange={handleChange}
         placeholder="Enter Payload"
-        
         value={payload}
       />
-      {/* prev code */}
-      {/* <button
-        className="convert hover:bg-yellow rounded-none hover:rounded-none "
-        // CODE BEFORE TRYING TO CONVERT PAYLOAD TO JSON LIVE
-        // onClick={() => {
-        //   let converted = utilities.convertToJson(payload)
-        //   setConverted(converted)
-        //   localStorage.setItem('converted',converted)
 
-        // }}
-      >
-        Convert
-      </button> */}
       <textarea
         className="to resize-none rounded-md"
         rows="10"
