@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/payload-json/static/css/main.89cd57b3.css",
+    "main.js": "/payload-json/static/js/main.523b4759.js",
+    "index.html": "/payload-json/index.html",
+    "main.89cd57b3.css.map": "/payload-json/static/css/main.89cd57b3.css.map",
+    "main.523b4759.js.map": "/payload-json/static/js/main.523b4759.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89cd57b3.css",
+    "static/js/main.523b4759.js"
+  ]
+}
